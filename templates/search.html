@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин смартфонов</title>
+
+    <style>
+
+        html {
+            height: 100%;
+        }
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        table caption {
+            font-size: 1.5em;
+            margin: .5em 0 .75em;
+        }
+
+        table tr {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: .35em;
+        }
+
+        table th,
+        table td {
+            padding: .625em;
+            text-align: center;
+        }
+
+        table th {
+            font-size: .85em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        @media screen and (max-width: 600px) {
+            table {
+                border: 0;
+            }
+
+            table caption {
+                font-size: 1.3em;
+            }
+
+            table thead {
+                border: none;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+
+            table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+            }
+
+            table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: right;
+            }
+
+            table td::before {
+                /*
+                * aria-label has no advantage, it won't be read inside a table
+                content: attr(aria-label);
+                */
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            table td:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        body {
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+
+        }
+
+        h1 {
+            text-align: left;
+        }
+
+        header {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 10px;
+            text-align: left;
+            font-size: 25px;
+
+        }
+
+       nav {
+        background-color: #ffffff;
+        border-bottom: 1px solid #cccccc;
+        padding: 15px;
+        text-align: left;
+      }
+      nav a {
+        text-decoration: none;
+        color: #333333;
+        margin: 10px;
+        font-size: 20px;
+      }
+      nav a:hover {
+        color: #000000;
+      }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 25px;
+            text-align: left;
+
+        }
+
+        p1 {
+            font-size: 20px;
+            line-height: 60px;
+        }
+
+        h2 {
+            font-size: 25px;
+            text-align: left;
+        }
+
+        p {
+            font-size: 15px;
+             transform: translate(5px, -12px);
+        }
+
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            bottom: 0;
+            height: 50px;
+            width: 100%;
+}
+    </style>
+</head>
+<form>
+<header id="hero">
+    <div>
+        <h2>Магазин смартфонов</h2>
+    </div>
+</header>
+<nav>
+    <a href="/main/">Главное меню</a>
+    <a href="/vvod/">Ввод</a>
+        <a href="/search">Поиск</a>
+        <a href="/statistic">Статистика</a>
+    <a href="/contacts">Помощь</a>
+        <a href="/vigryzka file database">Выгрузка файла БД</a>
+</nav>
+<section id="features">
+        <h1>Поиск</h1>
+
+<body>
+
+   <!-- Выбор по категории -->
+    <label for="brand">Выберите бренд:</label>
+
+<select name="my_dropdown">
+     {% for row in options %}
+    <option value="{{ row[0] }}">{{ row[0] }}</option>
+    {% endfor %}
+
+</select>
+
+
+      <label for="category">Выберите тип оплаты:</label>
+    <select id="type" name="type">
+      {% for row in options1 %}
+    <option value="{{ row[0] }}">{{ row[0] }}</option>
+    {% endfor %}
+    </select>
+
+      <label for="category">Выбирите статус заказа:</label>
+    <select id="type1" name="type1">
+    {% for row in options2 %}
+    <option value="{{ row[0] }}">{{ row[0] }}</option>
+    {% endfor %}
+        </select>
+
+  <form action="/forward/" method="post">
+  <button name="Найти" type="submit">Применить</button>
+</form>
+
+</body>
+
+</html>
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Название бренда</th>
+            <th scope="col">Название модели</th>
+            <th scope="col">Имя пользователя</th>
+            <th scope="col">Дата заказа</th>
+            <th scope="col">Форма оплаты</th>
+            <th scope="col">Адрес</th>
+            <th scope="col">Статус заказа</th>
+            <th scope="col">Акция</th>
+            <th scope="col">Цена заказа</th>
+            <th scope="col">Рейтинг заказа</th>
+            <th scope="col">Отзыв</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in context %}
+            <tr>
+                {% for cell in row %}
+                    <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+</form>
+
+</body>
+<footer role="contentinfo">
+    <p>© 2023 Магазин смартфонов. Все права защищены. </p>
+</footer>
+</html>

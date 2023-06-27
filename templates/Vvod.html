@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин смартфонов</title>
+
+    <style>
+      body {
+        background-color: #f8f8f8;
+        font-family: Arial, sans-serif;
+        color: #333333;
+        margin: 0;
+        padding: 0;
+
+
+      }
+
+
+      form1 {
+			display: flex;
+            position: absolute;top: -320px; right: 450px;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+      form2 {
+			display: flex;
+            position: absolute;top: -30px; right: 450px;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+      h1{
+          text-align: left;
+      }
+      header {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 10px;
+        text-align: left;
+        font-size: 25px;
+
+      }
+      nav {
+        background-color: #ffffff;
+        border-bottom: 1px solid #cccccc;
+        padding: 15px;
+        text-align: left;
+      }
+       a {
+        text-decoration: none;
+        color: #333333;
+        margin: 10px;
+        font-size: 20px;
+      }
+      nav a:hover {
+        color: #000000;
+      }
+      main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+       label {
+    font-size: 30px;
+  }
+        input {
+    font-size: 30px;
+  }
+      h1 {
+        font-size: 25px;text-align: left;
+
+      }
+      p1{
+          font-size: 20px;
+          line-height: 60px;
+      }
+       h2 {
+        font-size: 25px;text-align: left;
+      }
+      p {
+        font-size: 20px;
+      }
+      .telegram-link:hover {
+        background-color: #0077b3;
+      }
+      #map {
+        width: 100%;
+        height: 800px;
+      }
+      footer {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 2px;
+        text-align: center;
+          position: absolute;
+    bottom: 0;
+    height: 10%;
+    width: 100%;
+      }
+    </style>
+</head>
+<body>
+<header id="hero">
+    <div>
+        <h2>Магазин смартфонов</h2>
+    </div>
+</header>
+<nav>
+    <a href="/main/">Главное меню</a>
+    <a href="/vvod/">Ввод</a>
+        <a href="/search">Поиск</a>
+        <a href="/statistic">Статистика</a>
+    <a href="/contacts">Помощь</a>
+        <a href="/vigryzka file database">Выгрузка файла БД</a>
+</nav>
+<section id="features">
+    <div class="feature">
+        <h1>Редактор заказов</h1>
+        <div class="button-row">
+      <button id="nextButton" onclick="loadNextPage()">Следующий</button>
+<button id="previousButton" onclick="loadPreviousPage()">Предыдущий</button>
+  <button id="firstButton" onclick="first()">⇇ К первому</button>
+  <button id="lastButton" onclick="last()">К последнему ⇉</button>
+</div>
+
+<button id="delete" type="button">Удалить</button>
+
+        <form action="/vvod/" method="post">
+            <div class="button-row">
+                <button class="save-button">Сохранить</button>
+            </div>
+
+<div>
+  <label for="category">Выберите бренд:</label>
+  <select id="name_company" name="name_company" onchange="filterModels()">
+    {% for row in name_company %}
+      <option value="{{ row[0] }}">{{ row[0] }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+
+<div>
+  <label for="category">Выберите модель:</label>
+  <select id="id_model" name="id_model">
+      {% for row in model %}
+      <option value="{{ row[0] }}">{{ row[0] }}</option>
+    {% endfor %}
+  </select>
+</div>
+<div>
+  <label for="category">Выберите существующего пользователя:</label>
+  <select id="id_user" name="id_user" style="margin-left: 5px;">
+    {% for row in username %}
+      <option value="{{ row[0] }}">{{ row[0] }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+{#<script>#}
+{#  function last() {#}
+{#    // Выполнение AJAX-запроса к серверу для выполнения SQL-запроса и получения последней записи#}
+{#    var xhr = new XMLHttpRequest();#}
+{#    xhr.open('GET', '/last_order', true);#}
+{#    xhr.onreadystatechange = function() {#}
+{#      if (xhr.readyState === XMLHttpRequest.DONE) {#}
+{#        if (xhr.status === 200) {#}
+{#          var response = JSON.parse(xhr.responseText);#}
+{#          var newId = response.order_id;#}
+{#          var newUrl = '/vvod/?id=' + newId;#}
+{#          window.location.href = newUrl;#}
+{#        }#}
+{#      }#}
+{#    };#}
+{#    xhr.send();#}
+{#  }#}
+{#</script>#}
+{##}
+{##}
+{#        <script>#}
+{#  function first() {#}
+{#    // Выполнение AJAX-запроса к серверу для выполнения SQL-запроса и получения первой записи#}
+{#    var xhr = new XMLHttpRequest();#}
+{#    xhr.open('GET', '/first_order', true);#}
+{#    xhr.onreadystatechange = function() {#}
+{#      if (xhr.readyState === XMLHttpRequest.DONE) {#}
+{#        if (xhr.status === 200) {#}
+{#          var response = JSON.parse(xhr.responseText);#}
+{#          var newId = response.order_id;#}
+{#          var newUrl = '/vvod/?id=' + newId;#}
+{#          window.location.href = newUrl;#}
+{#        }#}
+{#      }#}
+{#    };#}
+{#    xhr.send();#}
+{#  }#}
+{#</script>#}
+
+
+
+<script>
+function loadNextPage() {
+  var currentId = parseInt('{{ request.args.get("id", 0) }}');
+  var newId = currentId + 1;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/next_id/' + currentId, true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        var response = JSON.parse(xhr.responseText);
+        var nextId = response.next_id;
+
+        if (nextId !== null) {
+          newId = nextId;
+        }
+
+        var newUrl = '/vvod/?id=' + newId;
+        window.location.href = newUrl;
+      }
+    }
+  };
+  xhr.send();
+}
+
+function last() {
+    // Выполнение AJAX-запроса к серверу для выполнения SQL-запроса и получения последней записи
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/last_order', true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
+          var newId = response.order_id;
+          var newUrl = '/vvod/?id=' + newId;
+          window.location.href = newUrl;
+        }
+      }
+    };
+    xhr.send();
+  }
+function first() {
+    // Выполнение AJAX-запроса к серверу для выполнения SQL-запроса и получения первой записи
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/first_order', true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
+          var newId = response.order_id;
+          var newUrl = '/vvod/?id=' + newId;
+          window.location.href = newUrl;
+        }
+      }
+    };
+    xhr.send();
+  }
+function loadPreviousPage() {
+  var currentId = parseInt('{{ request.args.get("id", 0) }}');
+  var newId = currentId - 1;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/previous_id/' + currentId, true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        var response = JSON.parse(xhr.responseText);
+        var previousId = response.previous_id;
+
+        if (previousId !== null) {
+          newId = previousId;
+        }
+
+        var newUrl = '/vvod/?id=' + newId;
+        window.location.href = newUrl;
+      }
+    }
+  };
+  xhr.send();
+}
+</script>
+
+<script>
+  function deleteOrder() {
+    var currentId = parseInt('{{ request.args.get("id", 0) }}'); // Получение текущего значения "next_id" из URL и преобразование его в число
+
+    // Выполнение AJAX-запроса для удаления заказа с указанным order_id
+    var xhr = new XMLHttpRequest();
+    xhr.open('DELETE', '/delete_order/' + currentId, true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          // Запрос успешно выполнен, перенаправляем пользователя на предыдущую страницу
+          first();
+        } else {
+          // Возникла ошибка при выполнении запроса
+          console.log('Ошибка удаления заказа');
+        }
+      }
+    };
+    xhr.send();
+  }
+
+  // Назначаем обработчик клика на кнопку "Удалить"
+  var deleteButton = document.getElementById('delete');
+  deleteButton.addEventListener('click', deleteOrder);
+</script>
+
+<script>
+  function filterModels() {
+    var selectedBrand = document.getElementById('name_company').value;
+    var modelsSelect = document.getElementById('id_model');
+
+    // Очистка списка моделей
+    modelsSelect.innerHTML = "";
+    // Отправка асинхронного запроса на сервер
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/get_models', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        var models = JSON.parse(xhr.responseText);
+        // Добавление полученных моделей в список
+        models.forEach(function (model) {
+          var option = document.createElement('option');
+          option.value = model[0];
+          option.textContent = model[0];
+          modelsSelect.appendChild(option);
+        });
+      }
+    };
+    xhr.send(JSON.stringify({ brand: selectedBrand }));
+  }
+
+        var currentIndex = 0;
+
+        function updateOrderDetails(orderData) {
+            $('#model').text(orderData.id_model);
+            $('#user').text(orderData.id_user);
+            $('#orderDate').text(orderData.order_date);
+            $('#paymentForm').text(orderData.payment_form);
+            $('#addressId').text(orderData.address_id);
+            $('#statusId').text(orderData.id_status);
+            $('#discountId').text(orderData.id_discount);
+            $('#price').text(orderData.price);
+            $('#rating').text(orderData.rating);
+            $('#reviewsId').text(orderData.id_reviews);
+            $('#orderId').text(orderData.order_id);
+        }
+
+        function getOrderData(orderId) {
+            $.ajax({
+                url: '/get_order_data',
+                method: 'POST',
+                data: JSON.stringify({'order_id': orderId}),
+                contentType: 'application/json',
+                success: function(data) {
+                    updateOrderDetails(data);
+                },
+                error: function() {
+                    alert('Error occurred while retrieving order details.');
+                }
+            });
+        }
+
+        function loadPreviousOrder() {
+            currentIndex--;
+            getOrderData(currentIndex);
+        }
+
+        function loadNextOrder() {
+            currentIndex++;
+            getOrderData(currentIndex);
+        }
+
+        $(document).ready(function() {
+            getOrderData(currentIndex);
+
+            $('#previousButton').click(function() {
+                loadPreviousOrder();
+            });
+
+            $('#nextButton').click(function() {
+                loadNextOrder();
+            });
+        });
+    </script>
+
+<div>
+    <label for="order_date">Введите дату:</label>
+    <input type="text" id="order_date" name="order_date" value="{{ order_date }}" pattern="\d{2}.\d{2}.\d{4}" placeholder="DD.MM.YYYY">
+</div>
+
+
+            <label for="category">Форма оплаты:</label>
+<select id="payment_form" name="payment_form">
+  {% for row in payment_forms %}
+    <option value="{{ row[0] }}">{{ row[0] }}</option>
+  {% endfor %}
+</select>
+
+            <div>
+                <label for="price">Цена заказа:</label>
+                <input type="text" id="price" name="price"value="{{ price }}">
+            </div>
+
+         <label for="category">Выберите рейтинг:</label>
+<select id="category" name="rating">
+  {% for row in ratings %}
+    <option value="{{ row[0] }}">{{ row[0] }}</option>
+  {% endfor %}
+</select>
+
+            <div>
+               <label for="category">Адрес:</label>
+<select id="address_id" name="address_id">
+  {% for row in address %}
+    <option value="{{ row[0] }}">{{ row[0] }}</option>
+  {% endfor %}
+</select>
+            </div>
+
+            <label for="category">Статус заказа:</label>
+<select id="id_status" name="id_status">
+  {% for row in description2 %}
+    <option value="{{ row[0] }}">{{ row[0] }}</option>
+  {% endfor %}
+</select>
+
+            <div>
+               <label for="category">Акция:</label>
+<select id="id_discount" name="id_discount">
+  {% for row in description %}
+    <option value="{{ row[0] }}">{{ row[0] }}</option>
+  {% endfor %}
+</select>
+            </div>
+
+        <div>
+  <label for="id_reviews">Отзыв:</label>
+  <input type="text" id="id_reviews" name="id_reviews" value="{{ review }}">
+</div>
+
+        </form>
+    </div>
+
+</section>
+
+<div>
+    <label for="category">Добавить новый смартфон:</label>
+  <a href="/create_sm/" style="margin-left: 5px;">
+    <button style="font-size: 20px;">Перейти</button>
+  </a>
+</div>
+
+<div>
+    <label for="category">Добавить нового пользователя:</label>
+  <a href="/new_user/" style="margin-left: 5px;">
+    <button style="font-size: 20px;">Перейти</button>
+  </a>
+</div>
+
+
+<footer>
+    <p>© 2023 Магазин смартфонов. Все права защищены. </p>
+</footer>
+</body>
+</html>

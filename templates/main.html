@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин смартфонов</title>
+{#    <style>#}
+{#      body {#}
+{#        background-color: #f2f2f2;#}
+{#        color: #333333;#}
+{#        font-family: Arial, sans-serif;#}
+{#      }#}
+{#      h1 {#}
+{#        text-align: center;#}
+{#        font-size: 3em;#}
+{#        margin-top: 50px;#}
+{#      }#}
+{#      nav {#}
+{#        background-color: #333333;#}
+{#        color: #ffffff;#}
+{#        overflow: hidden;#}
+{#        text-align: center;#}
+{#      }#}
+{#      nav a {#}
+{#        display: inline-block;#}
+{#        color: #ffffff;#}
+{#        text-align: center;#}
+{#        padding: 14px 16px;#}
+{#        text-decoration: none;#}
+{#      }#}
+{#      nav a:hover {#}
+{#        background-color: #111111;#}
+{#      }#}
+{#      #hero {#}
+{#        background-image: url('phone-hero.jpg');#}
+{#        background-size: cover;#}
+{#        height: 600px;#}
+{#        display: flex;#}
+{#        justify-content: center;#}
+{#        align-items: center;#}
+{#        text-align: center;#}
+{#        color: #ffffff;#}
+{#      }#}
+{#      #hero h2 {#}
+{#        font-size: 3em;#}
+{#        color: black;#}
+{#        margin-bottom: 20px;#}
+{#      }#}
+{#      #hero p {#}
+{#        font-size: 1.5em;#}
+{#        color: black;#}
+{#        margin-bottom: 20px;#}
+{#      }#}
+{#      #hero a {#}
+{#        background-color: #ffffff;#}
+{#        color: #333333;#}
+{#        text-align: center;#}
+{#        padding: 14px 16px;#}
+{#        text-decoration: none;#}
+{#        font-size: 1.2em;#}
+{#        border-radius: 4px;#}
+{#      }#}
+{#      #hero a:hover {#}
+{#        background-color: #333333;#}
+{#        color: #ffffff;#}
+{#      }#}
+{#      #features {#}
+{#        display: flex;#}
+{#        flex-wrap: wrap;#}
+{#        justify-content: center;#}
+{#        margin-top: 50px;#}
+{#      }#}
+{#      .feature {#}
+{#        width: 30%;#}
+{#        margin: 20px;#}
+{#        padding: 20px;#}
+{#        border: 1px solid #cccccc;#}
+{#        border-radius: 4px;#}
+{#        text-align: center;#}
+{#      }#}
+{#      .feature h3 {#}
+{#        font-size: 1.5em;#}
+{#        margin-bottom: 20px;#}
+{#      }#}
+{#      .feature p {#}
+{#        font-size: 1.2em;#}
+{#        line-height: 1.5em;#}
+{#      }#}
+{#      #cta {#}
+{#        background-color: #333333;#}
+{#        color: #ffffff;#}
+{#        text-align: center;#}
+{#        padding: 50px;#}
+{#        margin-top: 50px;#}
+{#      }#}
+{#      #cta h2 {#}
+{#        font-size: 2.5em;#}
+{#        margin-bottom: 20px;#}
+{#      }#}
+{#      #cta p {#}
+{#        font-size: 1.5em;#}
+{#        margin-bottom: 20px;#}
+{#      }#}
+{#      #cta a {#}
+{#        background-color: #ffffff;#}
+{#        color: #333333;#}
+{#        text-align: center;#}
+{#        padding: 14px 16px;#}
+{#        text-decoration: none;#}
+{#        font-size: 1.2em;#}
+{#        border-radius: 4px;#}
+{#      }#}
+{#      #cta a:hover {#}
+{#        background-color: #333333;#}
+{#        color: #ffffff;#}
+{#      }#}
+{#      footer {#}
+{#        background-color: #333333;#}
+{#        color: #ffffff;#}
+{#        text-align: center;#}
+{#        padding: 20px;#}
+{#        margin-top: 50px;#}
+{#      }#}
+{#      footer p {#}
+{#        font-size: 1.2em;#}
+{#        line-height: 1.5em;#}
+{#      }#}
+{##}
+{#    </style>#}
+    <style>
+      body {
+        background-color: #f8f8f8;
+        font-family: Arial, sans-serif;
+        color: #333333;
+        margin: 0;
+        padding: 0;
+
+      }
+      h1{
+          text-align: left;
+      }
+      header {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 20px;
+        text-align: left;
+        font-size: 25px;
+
+      }
+      nav {
+        background-color: #ffffff;
+        border-bottom: 1px solid #cccccc;
+        padding: 15px;
+        text-align: left;
+      }
+      nav a {
+        text-decoration: none;
+        color: #333333;
+        margin: 10px;
+        font-size: 20px;
+      }
+      nav a:hover {
+        color: #000000;
+      }
+      main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 25px;text-align: left;
+      }
+      p1{
+          font-size: 20px;
+          line-height: 60px;
+      }
+       h2 {
+        font-size: 25px;text-align: left;
+      }
+      p {
+        font-size: 15px;
+      }
+      .telegram-link:hover {
+        background-color: #0077b3;
+      }
+      #map {
+        width: 100%;
+        height: 800px;
+      }
+      footer {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 5px;
+        text-align: center;
+          position: absolute;
+    bottom: 0;
+    height: 5%;
+    width: 100%;
+      }
+    </style>
+</head>
+<body>
+
+<header id="hero">
+    <div>
+        <h2>Магазин смартфонов</h2>
+    </div>
+</header>
+<nav>
+    <a href="/main/">Главное меню</a>
+    <a href="/vvod/">Ввод</a>
+        <a href="/search">Поиск</a>
+        <a href="/statistic">Статистика</a>
+    <a href="/contacts">Помощь</a>
+        <a href="/vigryzka file database">Выгрузка файла БД</a>
+</nav>
+<div class="feature">
+    <h1>Широкий ассортимент</h1>
+    <p1>В нашем магазине вы найдете телефоны разных марок и моделей.</p1>
+</div>
+<div class="feature">
+    <h2>Выгодные цены</h2>
+    <p>У нас самые низкие цены на телефоны в городе.</p>
+</div>
+<div class="feature">
+    <h3>Быстрая доставка</h3>
+    <p>Мы доставим ваш телефон в течение 24 часов.</p>
+</div>
+<div class="container">
+    <c>Дополнительные функции нашего сайта</c>
+
+    <section id="cta">
+</section>
+<footer>
+    <p>© 2023 Магазин смартфонов. Все права защищены. </p>
+</footer>
+</body>
+</html>

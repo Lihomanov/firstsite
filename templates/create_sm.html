@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин смартфонов</title>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: left;
+        }
+
+        header {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px;
+            text-align: left;
+            font-size: 25px;
+        }
+
+        nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid #cccccc;
+            padding: 15px;
+            text-align: left;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333333;
+            margin: 10px;
+            font-size: 20px;
+        }
+
+        nav a:hover {
+            color: #000000;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 25px;
+            text-align: left;
+        }
+
+        p1 {
+            font-size: 20px;
+            line-height: 60px;
+        }
+
+        h2 {
+            font-size: 25px;
+            text-align: left;
+        }
+
+        p {
+            font-size: 15px;
+        }
+
+        .telegram-link:hover {
+            background-color: #0077b3;
+        }
+
+        #map {
+            width: 100%;
+            height: 800px;
+        }
+
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 5px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            height: 5%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header id="hero">
+    <div>
+        <h2>Магазин смартфонов</h2>
+    </div>
+</header>
+
+<nav>
+    <a href="/main/">Главное меню</a>
+    <a href="/vvod/">Ввод</a>
+    <a href="/search">Поиск</a>
+    <a href="/statistic">Статистика</a>
+    <a href="/contacts">Помощь</a>
+    <a href="/vigryzka file database">Выгрузка файла БД</a>
+</nav>
+
+<main>
+    <h2>Форма регистрации нового смартфона</h2>
+
+    <form id="registrationForm" action="/create_sm/" method="POST">
+        <label for="model">Модель:</label>
+        <br>
+        <input type="text" id="model" name="model" required>
+        <br>
+
+        <label for="name_company">Бренд:</label>
+        <br>
+        <input type="text" id="name_company" name="name_company" required>
+        <br>
+
+        <label for="color">Цвет:</label>
+        <br>
+        <input type="text" id="color" name="color" required>
+        <br>
+
+        <label for="os">Операционная система:</label>
+        <br>
+        <input type="text" id="os" name="os" required>
+        <br>
+
+        <label for="price">Цена:</label>
+        <br>
+        <input type="text" id="price" name="price" required>
+        <br>
+
+        <br>
+        <input type="submit" value="Сохранить" >
+    </form>
+</main>
+
+
+<footer>
+    <p>© 2023 Магазин смартфонов. Все права защищены. </p>
+</footer>
+</body>
+</html>
